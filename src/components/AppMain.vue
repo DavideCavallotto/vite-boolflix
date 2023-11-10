@@ -1,11 +1,12 @@
 <script>
 import CardMovie from './AppCardMovie.vue'
+import { store } from '../store'
 
 
 export default {
     data() {
         return {
-          
+          store: store,
         }
     },    
     methods: {
@@ -22,13 +23,10 @@ export default {
 </script>
 
 <template>
-<div class="main-section">
+<div class="main-section" v-if="store.send === true">
         <div class="container">
-            <div class="row">
-                <div class="col-4" v-for="card in 4">
-                    <CardMovie/>
-
-                </div>
+            <div class="row">                
+                <CardMovie v-for="infoCard in store.infoFilms" :card="infoCard" />               
                 
                 
             </div>                
@@ -45,7 +43,7 @@ export default {
 <style lang="scss" scoped>
 
 .main-section {
-    height: 1000px;
+    
     background-color: rgb(93, 93, 93);
 
     .container {
@@ -56,13 +54,12 @@ export default {
     .row {
         display: flex;
         justify-content: center;
-        align-items: center;
-        gap: 10px;
+        align-items: center;        
+        flex-wrap: wrap;
+        row-gap: 10px;
     }
 
-    .col-4 {
-        flex-basis: calc((100% / 12) * 4);
-    }
+   
 }
 
 

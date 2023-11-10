@@ -47,7 +47,7 @@ export default {
 <template>
 
   <AppHeader @search="fetchMovies"/>
-  <AppMain v-if="store.send === true"/>  
+  <AppMain/>  
 
 </template>
 

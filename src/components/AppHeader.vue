@@ -25,8 +25,7 @@ export default {
                     <p class="title-site">BoolFlix</p>
                     <div class="search">
                         <input placeholder="Inserisci cosa vuoi vedere" v-model="store.userTyping">
-                        <button @click="$emit('search')">Cerca</button>
-                        <p class="scritta">{{ store.userTyping }}</p>
+                        <button @click="$emit('search')">Cerca</button>                       
 
                     </div>
                 </div>
