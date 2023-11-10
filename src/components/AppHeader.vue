@@ -1,9 +1,10 @@
 <script>
-
+import { store } from '../store'
 export default {
   data() {
     return {
-        searchText: '',
+        store: store,
+        
     }
   }, 
   props: {
@@ -11,7 +12,7 @@ export default {
   },
   methods: {
     
-  }
+}
 }
 
 </script>
@@ -23,9 +24,9 @@ export default {
                 <div class="nav">
                     <p class="title-site">BoolFlix</p>
                     <div class="search">
-                        <input placeholder="Inserisci cosa vuoi vedere" v-model="searchText">
+                        <input placeholder="Inserisci cosa vuoi vedere" v-model="store.userTyping">
                         <button @click="$emit('search')">Cerca</button>
-                        <p class="scritta">{{ searchText }}</p>
+                        <p class="scritta">{{ store.userTyping }}</p>
 
                     </div>
                 </div>

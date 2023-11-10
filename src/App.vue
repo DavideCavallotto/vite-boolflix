@@ -9,7 +9,7 @@ export default {
     return {
       store: store,
       API_KEY:'9f1a79a8d7d0192e8b749306792e2da8',
-      query: 'star wars',    
+          
       
       
     }
@@ -23,7 +23,7 @@ export default {
       axios.get('https://api.themoviedb.org/3/search/movie',{
         params: {
           api_key: this.API_KEY,
-          query: this.query
+          query: this.store.userTyping
         }
       }).then(res => {        
         console.log(res.data.results)
