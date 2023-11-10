@@ -3,9 +3,12 @@
 export default {
   data() {
     return {
-      
+        searchText: '',
     }
   }, 
+  props: {
+    
+  },
   methods: {
     
   }
@@ -20,8 +23,9 @@ export default {
                 <div class="nav">
                     <p class="title-site">BoolFlix</p>
                     <div class="search">
-                        <input type="text" name="" id="" placeholder="Inserisci cosa vuoi vedere">
+                        <input placeholder="Inserisci cosa vuoi vedere" v-model="searchText">
                         <button @click="$emit('search')">Cerca</button>
+                        <p class="scritta">{{ searchText }}</p>
 
                     </div>
                 </div>
@@ -64,6 +68,10 @@ export default {
         gap: 5px;
     }
 
+}
+
+.scritta {
+    color: aliceblue;
 }
 
 

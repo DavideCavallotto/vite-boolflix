@@ -1,6 +1,7 @@
 <script>
 import CardMovie from './AppCardMovie.vue'
 
+
 export default {
     data() {
         return {

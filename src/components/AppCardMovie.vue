@@ -1,10 +1,10 @@
 <script>
-
+import { store } from '../store'
 
 export default {
     data() {
         return {
-          
+          store: store
         }
     },    
     methods: {
@@ -23,7 +23,7 @@ export default {
 <template>
     <div class="card">
         <p class="title">
-            Titolo
+            {{ store.infoFilms[0].original_title }}
         </p>
         <p class="original-title">
             Titolo originale
