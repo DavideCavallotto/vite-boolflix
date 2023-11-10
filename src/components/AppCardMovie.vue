@@ -4,7 +4,8 @@ import { store } from '../store'
 export default {
     data() {
         return {
-          store: store
+          store: store,
+          src: 'https://image.tmdb.org/t/p/w185'
         }
     },    
     methods: {
@@ -22,6 +23,7 @@ export default {
 
 <template>
     <div class="card">
+        <img :src='src + store.infoFilms[0].poster_path' alt="">
         <p class="title">
             {{ store.infoFilms[0].original_title }}
         </p>
@@ -43,8 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-    width: 150px;
-    height: 200px;
+    
     background-color: antiquewhite;
     border-radius: 20px;
     padding: 30px;
