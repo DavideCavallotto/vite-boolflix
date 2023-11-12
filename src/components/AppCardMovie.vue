@@ -51,39 +51,45 @@ export default {
     
     <div class="col-3">
         <div class="card">
-            <img :src='src + card.poster_path' alt="">
-            <p class="title">
-                Titolo: {{ card.title }}
-            </p>
-            <p class="original-title">
-                Titolo Originale: {{ card.original_title }}
-            </p>
-            <p class="flag-language language" v-if="srcFlag">
-                <p>Lingua:</p> 
-                <span >                    
-                    <img :src="srcFlag" alt="">
-                </span>
-            </p>
-            <p class="language" v-else>
-                <p>Lingua:</p>
-                {{ card.original_language }}
-            </p>
-            <p class="vote">
-                <!-- Voto:{{ parseInt(card.vote_average) }} -->
-                Voto: {{ getIntegers(card.vote_average) }}
+            <div class="card-header">
+                <img :src='src + card.poster_path' alt="">
+            
+            </div>
+            <div class="card-body">
 
-            </p>
-            <div class="star-container">
-                <p v-for="star in getIntegers(card.vote_average)">&star;</p>
-
+                <p class="title">
+                    Titolo: {{ card.title }}
+                </p>
+                <p class="original-title">
+                    Titolo Originale: {{ card.original_title }}
+                </p>
+                <p class="flag-language language" v-if="srcFlag">
+                    <p>Lingua:</p> 
+                    <span >                    
+                        <img :src="srcFlag" alt="">
+                    </span>
+                </p>
+                <p class="language" v-else>
+                    <p>Lingua:</p>
+                    {{ card.original_language }}
+                </p>
+                <p class="vote">
+                    <!-- Voto:{{ parseInt(card.vote_average) }} -->
+                    Voto: {{ getIntegers(card.vote_average) }}
+                    
+                </p>
+                <div class="star-container">
+                    <p v-for="star in getIntegers(card.vote_average)">&star;</p>
+                    
+                </div>
             </div>
             
         </div>
-
+        
     </div>
-
     
-
+    
+    
 </template>
 
 <style lang="scss" scoped>
@@ -96,9 +102,9 @@ export default {
 }
 
 .col-3 {
-    flex-basis: calc((100% / 12) * 3);
-    height: 450px; 
-    padding-right: 10px;   
+    flex-basis: calc((100% / 12) * 3);     
+    padding-right: 10px;  
+    height: 300px; 
 
 }
 .language {
@@ -109,6 +115,18 @@ export default {
 
 .star-container {
     display: flex;
+}
+
+.card-body {
+    display: none;
+}
+
+.card:hover .card-body {
+    display: block;
+}
+
+.card:hover .card-header {
+    display: none;
 }
 
 </style>
