@@ -17,6 +17,19 @@ export default {
   methods: {
     getLog() {
       console.log('ho cliccato')
+    },    
+
+    fetchSeries() {
+      axios.get('https://api.themoviedb.org/3/search/tv',{
+        params: {
+          api_key: this.API_KEY,
+          query: this.store.userTyping
+        }
+      }).then(res => {
+        const series = res.data.results
+        this.store.infoSeries = series
+        this.store.send = true
+      })
     },
 
     fetchMovies() {
@@ -31,7 +44,12 @@ export default {
         this.store.infoFilms = films
         this.store.send = true
       })
-    }
+    },
+    
+    handleSearch() {
+      this.fetchMovies();
+      this.fetchSeries();
+    },
   },
 
   components: {
@@ -45,8 +63,8 @@ export default {
 </script>
 
 <template>
-
-  <AppHeader @search="fetchMovies"/>
+  
+  <AppHeader @enterSearch="handleSearch" @search="handleSearch"/>
   <AppMain/>  
 
 </template>

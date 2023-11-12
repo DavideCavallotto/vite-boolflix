@@ -42,6 +42,7 @@ export default {
 </script>
 
 <template>
+    
     <div class="col-3">
         <div class="card">
             <img :src='src + card.poster_path' alt="">
@@ -83,8 +84,10 @@ export default {
 }
 
 .col-3 {
-        flex-basis: calc((100% / 12) * 3);
-        height: 450px;    
+    flex-basis: calc((100% / 12) * 3);
+    height: 450px; 
+    padding-right: 10px;   
+
 }
 .language {
     display: flex;

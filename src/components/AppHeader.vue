@@ -24,7 +24,7 @@ export default {
                 <div class="nav">
                     <p class="title-site">BoolFlix</p>
                     <div class="search">
-                        <input placeholder="Inserisci cosa vuoi vedere" v-model="store.userTyping">
+                        <input @keyup.enter="$emit('enterSearch')" placeholder="Inserisci cosa vuoi vedere" v-model="store.userTyping">
                         <button @click="$emit('search')">Cerca</button>                       
 
                     </div>
