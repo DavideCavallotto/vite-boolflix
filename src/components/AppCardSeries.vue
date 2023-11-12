@@ -6,7 +6,8 @@ export default {
         return {
           store: store,
           src: 'https://image.tmdb.org/t/p/w185',
-          srcFlag: ''
+          srcFlag: '',
+          srcNone: 'https://image.tmdb.org/t/p/w185null'
         }
     },    
     methods: {
@@ -26,9 +27,11 @@ export default {
                 null
             }
         },
+
         getIntegers(vote) {            
             return (Math.ceil(vote/2))
         },
+        
         
     },
     props: {
@@ -48,10 +51,14 @@ export default {
     
     <div class="col-3">
         <div class="card">
-            <div class="card-header">
-                <img :src='src + card.poster_path' alt="">
-
+            <div class="card-header" v-if="card.poster_path">
+                <img :src='src + card.poster_path' alt="">               
+                
+                
             </div>
+            <p v-else-if="srcNone">
+                <img src="/no-img.png" alt="">                
+            </p>
             <div class="card-body">
                 <p class="title">
                     Titolo: {{ card.name }}
@@ -98,7 +105,7 @@ export default {
 .col-3 {
     flex-basis: calc((100% / 12) * 3);     
     padding-right: 10px;  
-    
+    color: white;
 
 }
 .language {

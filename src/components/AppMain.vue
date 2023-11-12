@@ -65,7 +65,7 @@ export default {
     .container {
         width: 800px;
         margin: 0 auto;
-        padding-top: 100px;
+        padding: 50px 0;
     }
     .row {
         display: flex;
