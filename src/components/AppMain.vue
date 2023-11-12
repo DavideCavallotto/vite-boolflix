@@ -60,6 +60,7 @@ export default {
     .type-content {
         text-align: center;
         padding-top: 50px;
+        color: white;
     }
     .container {
         width: 800px;

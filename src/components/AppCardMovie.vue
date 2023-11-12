@@ -6,7 +6,9 @@ export default {
         return {
           store: store,
           src: 'https://image.tmdb.org/t/p/w185',
-          srcFlag: ''
+          srcFlag: '',
+          
+
         }
     },    
     methods: {
@@ -25,18 +27,22 @@ export default {
             } else {
                 null
             }
+        },
+        getIntegers(vote) {            
+            return (Math.ceil(vote/2))
         }
         
     },
     props: {
-        card: Object
+        card: Object,
+        
     },
     components: {
         
     },
-    created() {
-        this.getFlags();
-    }
+    created() {        
+        this.getFlags();             
+    },
 }
 
 </script>
@@ -63,9 +69,15 @@ export default {
                 {{ card.original_language }}
             </p>
             <p class="vote">
-                Voto: {{ card.vote_average }}
+                <!-- Voto:{{ parseInt(card.vote_average) }} -->
+                Voto: {{ getIntegers(card.vote_average) }}
+
             </p>
-    
+            <div class="star-container">
+                <p v-for="star in getIntegers(card.vote_average)">&star;</p>
+
+            </div>
+            
         </div>
 
     </div>
@@ -94,6 +106,9 @@ export default {
     gap: 2px;
     align-items: center;
 }
-    
+
+.star-container {
+    display: flex;
+}
 
 </style>
