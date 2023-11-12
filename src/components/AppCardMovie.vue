@@ -95,16 +95,15 @@ export default {
 <style lang="scss" scoped>
 .card {
     
-    background-color: antiquewhite;
-    border-radius: 20px;
-    padding: 10px;   
-    height: 100%; 
+    background-color: rgb(0, 0, 0);  
+    width: 170px;
+    height: 255.45px; 
 }
 
 .col-3 {
     flex-basis: calc((100% / 12) * 3);     
     padding-right: 10px;  
-    height: 300px; 
+    
 
 }
 .language {
@@ -117,8 +116,15 @@ export default {
     display: flex;
 }
 
+.card-header img{
+    width: 170px;
+    height: 255.45px; 
+}
+
 .card-body {
     display: none;
+    padding: 10px;
+    color: white;
 }
 
 .card:hover .card-body {

@@ -25,7 +25,10 @@ export default {
             } else {
                 null
             }
-        }
+        },
+        getIntegers(vote) {            
+            return (Math.ceil(vote/2))
+        },
         
     },
     props: {
@@ -45,26 +48,36 @@ export default {
     
     <div class="col-3">
         <div class="card">
-            <img :src='src + card.poster_path' alt="">
-            <p class="title">
-                Titolo: {{ card.name }}
-            </p>
-            <p class="original-title">
-                Titolo Originale: {{ card.original_name }}
-            </p>
-            <p class="flag-language language" v-if="srcFlag">
-                <p>Lingua:</p> 
-                <span >                    
-                    <img :src="srcFlag" alt="">
-                </span>
-            </p>
-            <p class="language" v-else>
-                <p>Lingua:</p>
-                {{ card.original_language }}
-            </p>
-            <p class="vote">
-                Voto: {{ card.vote_average }}
-            </p>
+            <div class="card-header">
+                <img :src='src + card.poster_path' alt="">
+
+            </div>
+            <div class="card-body">
+                <p class="title">
+                    Titolo: {{ card.name }}
+                </p>
+                <p class="original-title">
+                    Titolo Originale: {{ card.original_name }}
+                </p>
+                <p class="flag-language language" v-if="srcFlag">
+                    <p>Lingua:</p> 
+                    <span >                    
+                        <img :src="srcFlag" alt="">
+                    </span>
+                </p>
+                <p class="language" v-else>
+                    <p>Lingua:</p>
+                    {{ card.original_language }}
+                </p>
+                <p class="vote">
+                    Voto: {{ card.vote_average }}
+                </p>
+                <div class="star-container">
+                    <p v-for="star in getIntegers(card.vote_average)">&star;</p>
+                    
+                </div>
+
+            </div>
     
         </div>
 
@@ -77,22 +90,44 @@ export default {
 <style lang="scss" scoped>
 .card {
     
-    background-color: antiquewhite;
-    border-radius: 20px;
-    padding: 10px;   
-    height: 100%; 
+    background-color: rgb(0, 0, 0);  
+    width: 170px;
+    height: 255.45px; 
 }
 
 .col-3 {
-    flex-basis: calc((100% / 12) * 3);
-    height: 450px; 
-    padding-right: 10px;   
+    flex-basis: calc((100% / 12) * 3);     
+    padding-right: 10px;  
+    
 
 }
 .language {
     display: flex;
     gap: 2px;
     align-items: center;
+}
+
+.star-container {
+    display: flex;
+}
+
+.card-header img{
+    width: 170px;
+    height: 255.45px; 
+}
+
+.card-body {
+    display: none;
+    padding: 10px;
+    color: white;
+}
+
+.card:hover .card-body {
+    display: block;
+}
+
+.card:hover .card-header {
+    display: none;
 }
     
 
