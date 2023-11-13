@@ -50,15 +50,16 @@ export default {
 
 <template>
     
-    <div class="col-3">
+    <div class="col-2">
         <div class="card">
             <div class="card-header">
-                <div  v-if="card.poster_path">
+                <div v-if="card.poster_path">
                     <img :src='src + card.poster_path' alt="">               
 
                 </div>
-                <div class="no-img" v-else-if="srcNone">                
-                    <img src="/img-not-found.png" alt="">
+                <div class="poster-none" v-else-if="srcNone">                
+                    {{ card.title }}
+                    <img class="no-img" src="/no-img.png" alt="">
                 </div>
                 
                 
@@ -110,22 +111,30 @@ export default {
     background-color: rgb(0, 0, 0);  
     width: 170px;
     height: 255.45px;    
-    .card-header img{
-        width: 170px;
-        height: 255.45px; 
+    
+    .card-header{
+        .poster-none {
+            padding-top: 10px;
+            color: white;
+            text-align: center;
+        }
+        
     }
+    
     
     .card-body {
         display: none;
         padding: 10px;
         color: white;
+        width: 170px;
+        height: 255.45px;
         overflow: auto;  
+        
         
         p {
             margin-bottom: 5px;
         }  
     }    
-    
     
 }
 .card:hover .card-body {
@@ -135,7 +144,7 @@ export default {
 .card:hover .card-header {
     display: none;
 }
-.col-3 {
+.col-2 {
     flex-basis: calc((100% / 12) * 2);     
     padding-right: 10px;     
     
@@ -151,15 +160,8 @@ export default {
     margin-bottom: 5px;
 
 }
-
-
 .no-img {
-    height: 100%;
-    
-    img {
-        height: 100%;
-        object-fit: cover;
-    }
+    object-fit: contain;     
 }
 
 ::-webkit-scrollbar {

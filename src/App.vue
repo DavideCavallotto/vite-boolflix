@@ -29,6 +29,7 @@ export default {
         const series = res.data.results
         this.store.infoSeries = series
         this.store.send = true
+        store.userTyping = ''
       })
     },
 
@@ -43,12 +44,13 @@ export default {
         const films = res.data.results
         this.store.infoFilms = films
         this.store.send = true
+        store.userTyping = ''
       })
     },
     
     handleSearch() {
       this.fetchMovies();
-      this.fetchSeries();
+      this.fetchSeries();      
     },
   },
 
@@ -63,12 +65,20 @@ export default {
 </script>
 
 <template>
-  
-  <AppHeader @enterSearch="handleSearch" @search="handleSearch"/>
-  <AppMain/>  
+  <div class="container-app">
+    <AppHeader @enterSearch="handleSearch" @search="handleSearch"/>
+    <AppMain/>  
+
+  </div>
 
 </template>
 
 <style lang="scss">
 @use './style/general.scss';
+
+.container-app {
+  overflow: hidden;
+}
+
+
 </style>

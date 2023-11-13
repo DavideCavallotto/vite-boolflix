@@ -16,3 +16,24 @@ a {
     color: currentColor;
     text-decoration: none;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+#app {
+    overflow: hidden;
+    height: 100vh;
+}

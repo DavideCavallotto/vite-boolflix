@@ -43,9 +43,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.header-section {
+    overflow: hidden;
+}
 .container { 
     margin: 0 auto;
     padding: 0;
+    
     .nav {
         background-color: black;
         padding: 10px;    

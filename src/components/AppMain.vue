@@ -39,7 +39,7 @@ export default {
     <div class="type-content">
         <h1>Serie tv</h1>
     </div>
-    <div class="container">
+    <div class="container tv-container">
         <div class="row">                
             <CardSeries v-for="infoCard in store.infoSeries" :card="infoCard"/>          
                         
@@ -53,8 +53,9 @@ export default {
 
 <style lang="scss" scoped>
 
-.main-section {
-    
+.main-section {    
+    overflow: auto;
+    height: 100vh;
     background-color: #282B69;
 
     .type-content {
@@ -72,6 +73,12 @@ export default {
         margin: 0 auto;
         padding: 50px 0;
     }
+
+    .tv-container {
+        padding-bottom: 150px;
+    }
+
+
     .row {
         display: flex;
         justify-content: center;
@@ -82,7 +89,5 @@ export default {
 
    
 }
-
-
 
 </style>
