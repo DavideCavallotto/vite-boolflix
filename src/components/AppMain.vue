@@ -55,15 +55,20 @@ export default {
 
 .main-section {
     
-    background-color: rgb(93, 93, 93);
+    background-color: #282B69;
 
     .type-content {
         text-align: center;
         padding-top: 50px;
-        color: white;
+        color: #282B69;
+
+        h1 {
+            -webkit-text-stroke: 0.8px #E92088;
+            font-size: 50px;
+        }
     }
     .container {
-        width: 800px;
+        width: 1024px;
         margin: 0 auto;
         padding: 50px 0;
     }

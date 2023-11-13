@@ -106,7 +106,7 @@ export default {
 }
 
 .col-3 {
-    flex-basis: calc((100% / 12) * 3);     
+    flex-basis: calc((100% / 12) * 2);     
     padding-right: 10px;  
     
 
