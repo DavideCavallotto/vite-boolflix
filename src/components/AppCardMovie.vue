@@ -52,14 +52,17 @@ export default {
     
     <div class="col-3">
         <div class="card">
-            <div class="card-header" v-if="card.poster_path">
-                <img :src='src + card.poster_path' alt="">               
+            <div class="card-header">
+                <div  v-if="card.poster_path">
+                    <img :src='src + card.poster_path' alt="">               
+
+                </div>
+                <div class="no-img" v-else-if="srcNone">                
+                    <img src="/img-not-found.png" alt="">
+                </div>
                 
                 
             </div>
-            <p class="no-img" v-else-if="srcNone">                
-                <img src="/img-not-found.png" alt="">
-            </p>
             <div class="card-body">
 
                 <p class="title">
@@ -87,6 +90,10 @@ export default {
                     <p v-for="star in getIntegers(card.vote_average)">&star;</p>
                     
                 </div>
+                <p>
+                    {{ card.overview }}
+                </p>
+
             </div>
             
         </div>
@@ -102,14 +109,36 @@ export default {
     
     background-color: rgb(0, 0, 0);  
     width: 170px;
-    height: 255.45px; 
+    height: 255.45px;    
+    .card-header img{
+        width: 170px;
+        height: 255.45px; 
+    }
+    
+    .card-body {
+        display: none;
+        padding: 10px;
+        color: white;
+        overflow: auto;  
+        
+        p {
+            margin-bottom: 5px;
+        }  
+    }    
+    
+    
+}
+.card:hover .card-body {
+    display: block;
 }
 
+.card:hover .card-header {
+    display: none;
+}
 .col-3 {
     flex-basis: calc((100% / 12) * 2);     
-    padding-right: 10px;  
+    padding-right: 10px;     
     
-
 }
 .language {
     display: flex;
@@ -119,34 +148,34 @@ export default {
 
 .star-container {
     display: flex;
+    margin-bottom: 5px;
+
 }
 
-.card-header img{
-    width: 170px;
-    height: 255.45px; 
-}
-
-.card-body {
-    display: none;
-    padding: 10px;
-    color: white;
-}
-
-.card:hover .card-body {
-    display: block;
-}
-
-.card:hover .card-header {
-    display: none;
-}
 
 .no-img {
     height: 100%;
-
+    
     img {
         height: 100%;
         object-fit: cover;
     }
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
 
 </style>
