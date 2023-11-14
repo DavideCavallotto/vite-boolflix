@@ -1,13 +1,12 @@
 <script>
 import CardMovie from './AppCardMovie.vue'
-import CardSeries from './AppCardSeries.vue'
 import { store } from '../store'
 
 
 export default {
     data() {
         return {
-          store: store,
+          store: store,          
         }
     },    
     methods: {
@@ -15,7 +14,7 @@ export default {
     },
     components: {
         CardMovie,
-        CardSeries
+        
     },
     created() {
         
@@ -31,7 +30,7 @@ export default {
         <h1>Film</h1>
     </div>
     <div class="container">
-        <div class="row">                
+        <div class="row">                            
             <CardMovie v-for="infoCard in store.infoFilms" :card="infoCard" />              
                         
         </div>                                   
@@ -41,7 +40,7 @@ export default {
     </div>
     <div class="container tv-container">
         <div class="row">                
-            <CardSeries v-for="infoCard in store.infoSeries" :card="infoCard"/>          
+            <CardMovie v-for="infoCard in store.infoSeries" :card="infoCard"/>          
                         
         </div>                                   
     </div>

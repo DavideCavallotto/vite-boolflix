@@ -48,8 +48,7 @@ export default {
 
 </script>
 
-<template>
-    
+<template>    
     <div class="col-2">
         <div class="card">
             <div class="card-header">
@@ -59,6 +58,7 @@ export default {
                 </div>
                 <div class="poster-none" v-else-if="srcNone">                
                     {{ card.title }}
+                    {{ card.name }}
                     <img class="no-img" src="/no-img.png" alt="">
                 </div>
                 
@@ -68,9 +68,11 @@ export default {
 
                 <p class="title">
                     Titolo: {{ card.title }}
+                    {{ card.name }}
                 </p>
                 <p class="original-title">
                     Titolo Originale: {{ card.original_title }}
+                    Titolo Originale: {{ card.original_name }}
                 </p>
                 <p class="flag-language language" v-if="srcFlag">
                     <p>Lingua:</p> 
@@ -99,9 +101,7 @@ export default {
             
         </div>
         
-    </div>
-    
-    
+    </div>    
     
 </template>
 
