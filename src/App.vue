@@ -58,6 +58,17 @@ export default {
         this.store.send = true
         store.userTyping = ''
       })
+
+      // axios.get('https://api.themoviedb.org/3/search/person',{
+      //   params: {
+      //     api_key: this.API_KEY,
+      //     query: this.store.userTyping
+      //   }
+      // }).then(res => {
+      //   console.log(res.data.results)
+      //   const actors = res.data.results
+      //   this.store.actors = actors
+      // })
     },
     
     // handleSearch() {

@@ -6,6 +6,7 @@ export const store = reactive({
     send: false,
     userTyping: '',
     infoSeries: [],
+    actors: []
          
 	
 })
