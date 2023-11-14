@@ -19,19 +19,19 @@ export default {
       console.log('ho cliccato')
     },    
 
-    fetchSeries() {
-      axios.get('https://api.themoviedb.org/3/search/tv',{
-        params: {
-          api_key: this.API_KEY,
-          query: this.store.userTyping
-        }
-      }).then(res => {
-        const series = res.data.results
-        this.store.infoSeries = series
-        this.store.send = true
-        store.userTyping = ''
-      })
-    },
+    // fetchSeries() {
+    //   axios.get('https://api.themoviedb.org/3/search/tv',{
+    //     params: {
+    //       api_key: this.API_KEY,
+    //       query: this.store.userTyping
+    //     }
+    //   }).then(res => {
+    //     const series = res.data.results
+    //     this.store.infoSeries = series
+    //     this.store.send = true
+    //     store.userTyping = ''
+    //   })
+    // },
 
     fetchMovies() {
       axios.get('https://api.themoviedb.org/3/search/movie',{
@@ -46,12 +46,24 @@ export default {
         this.store.send = true
         store.userTyping = ''
       })
+
+      axios.get('https://api.themoviedb.org/3/search/tv',{
+        params: {
+          api_key: this.API_KEY,
+          query: this.store.userTyping
+        }
+      }).then(res => {
+        const series = res.data.results
+        this.store.infoSeries = series
+        this.store.send = true
+        store.userTyping = ''
+      })
     },
     
-    handleSearch() {
-      this.fetchMovies();
-      this.fetchSeries();      
-    },
+    // handleSearch() {
+    //   this.fetchMovies();
+    //   this.fetchSeries();      
+    // },
   },
 
   components: {
@@ -66,7 +78,8 @@ export default {
 
 <template>
   <div class="container-app">
-    <AppHeader @enterSearch="handleSearch" @search="handleSearch"/>
+    <!-- <AppHeader @enterSearch="handleSearch" @search="handleSearch"/> -->
+    <AppHeader @enterSearch="fetchMovies" @search="fetchMovies"/>
     <AppMain/>  
 
   </div>
