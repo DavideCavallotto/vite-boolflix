@@ -16,6 +16,16 @@ export default {
         CardMovie,
         
     },
+    computed: {
+        movies() {
+            return store.infoFilms
+        },
+        series() {
+            return store.infoSeries
+        }
+
+
+    },
     created() {
         
     }
@@ -31,7 +41,7 @@ export default {
     </div>
     <div class="container">
         <div class="row">                            
-            <CardMovie v-for="infoCard in store.infoFilms" :card="infoCard" />              
+            <CardMovie v-for="infoCard in movies" :card="infoCard" />              
                         
         </div>                                   
     </div>
@@ -40,7 +50,7 @@ export default {
     </div>
     <div class="container tv-container">
         <div class="row">                
-            <CardMovie v-for="infoCard in store.infoSeries" :card="infoCard"/>          
+            <CardMovie v-for="infoCard in series" :card="infoCard"/>          
                         
         </div>                                   
     </div>

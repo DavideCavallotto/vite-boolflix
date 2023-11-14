@@ -28,18 +28,16 @@ export default {
             } else {
                 null
             }
-        },
-        getIntegers(vote) {            
-            return (Math.ceil(vote/2))
-        }
-        
+        },        
     },
     props: {
         card: Object,
         
     },
-    components: {
-        
+    computed: {
+        vote() {
+            return Math.ceil(this.card.vote_average / 2)
+        }
     },
     created() {        
         this.getFlags();             
@@ -66,12 +64,17 @@ export default {
             </div>
             <div class="card-body">
 
-                <p class="title">
-                    Titolo: {{ card.title }}
-                    {{ card.name }}
+                <p class="title" v-if="card.title">
+                    Titolo: {{ card.title }}                    
                 </p>
-                <p class="original-title">
-                    Titolo Originale: {{ card.original_title }}
+                <p class="title" v-else>                    
+                    Titolo: {{ card.name }}
+                </p>
+                <p></p>
+                <p class="original-title" v-if="card.original_title">
+                    Titolo Originale: {{ card.original_title }}                    
+                </p>
+                <p class="original-title" v-else>                    
                     Titolo Originale: {{ card.original_name }}
                 </p>
                 <p class="flag-language language" v-if="srcFlag">
@@ -86,11 +89,12 @@ export default {
                 </p>
                 <p class="vote">
                     <!-- Voto:{{ parseInt(card.vote_average) }} -->
-                    Voto: {{ getIntegers(card.vote_average) }}
+                    Voto: {{ vote }}
                     
                 </p>
                 <div class="star-container">
-                    <p v-for="star in getIntegers(card.vote_average)">&star;</p>
+                    <p v-for="star in vote" class="star-vote">&starf;</p>
+                    <p v-for="star in 5 - vote">&star;</p>
                     
                 </div>
                 <p>
@@ -158,6 +162,10 @@ export default {
 .star-container {
     display: flex;
     margin-bottom: 5px;
+
+    .star-vote {
+        color: gold;
+    }
 
 }
 .no-img {
